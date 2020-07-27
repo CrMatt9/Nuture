@@ -1,7 +1,11 @@
 # from .views import UserInfoViewSet, UserRecordView
-from rest_framework import routers
-from django.urls import path, include
+from django.urls import path
 from .views import UserRecordView
+
+app_name = 'api'
+urlpatterns = [
+    path('user/', UserRecordView.as_view(), name='users'),
+]
 
 
 # app_name = 'api-Users'
@@ -14,7 +18,3 @@ from .views import UserRecordView
 #     path('user/', UserRecordView.as_view(), name='users'),
 # ]
 
-app_name = 'api'
-urlpatterns = [
-    path('user/', UserRecordView.as_view(), name='users'),
-]

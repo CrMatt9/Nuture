@@ -1,10 +1,9 @@
-from rest_framework import viewsets, status
+from .serializers import UserSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.permissions import IsAdminUser
-# from .serializers import UserInfoSerializer, UserSerializer
-from ..models import UserInfo, CustomUser
-from .serializers import UserSerializer
+from django.contrib.auth.models import User
 
 
 class UserRecordView(APIView):
@@ -13,10 +12,10 @@ class UserRecordView(APIView):
     users. GET request returns the registered users whereas
     a POST request allows to create a new user.
     """
-    # permission_classes = [IsAdminUser]
+    permission_classes = [IsAdminUser]
 
     def get(self, format=None):
-        users = CustomUser.objects.all()
+        users = User.objects.all()
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
 
@@ -26,7 +25,7 @@ class UserRecordView(APIView):
             serializer.create(validated_data=request.data)
             return Response(
                 serializer.data,
-                status = status.HTTP_201_CREATED
+                status=status.HTTP_201_CREATED
             )
         return Response(
             {

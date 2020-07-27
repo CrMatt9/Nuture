@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:app/size_config.dart';
+import 'package:app/custom_widgets/myButton.dart';
+import 'package:app/custom_widgets/customColors.dart';
+
 
 class Login extends StatefulWidget {
 
@@ -11,60 +15,60 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
-  final _loginController = TextEditingController();
-  int actualLength = 0;
-
-  void dispose() {
-    _loginController.dispose();
-    super.dispose();
-  }
-
-  int _getActualLenght() {
-    actualLength = _loginController.text.length;
-  }
-
   @override
 
-  void initState() {
-    super.initState();
-    _loginController.addListener(_getActualLenght);
-  }
-
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Icon(
-          Icons.arrow_back_ios,
+        iconTheme: IconThemeData(
           color: Colors.black,
         ),
         title: Text(
-        'Create an account',
+        'Login',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 20,
+            fontSize: SizeConfig.screenWidth*(20/375),
             fontFamily: 'Roboto Condensed',
           ),
         ),
-        centerTitle: true,
         elevation: 0,
       ),
       body: Center(
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(23.5),
+              padding: new EdgeInsets.fromLTRB(
+                SizeConfig.screenWidth*(23.5/375),
+                SizeConfig.screenHeight*(34/812),
+                SizeConfig.screenWidth*(23.5/375),
+                0,
+              ),
               child: TextField(
-                inputFormatters: [LengthLimitingTextInputFormatter(10)],
-                controller: _loginController,
                 decoration: InputDecoration(
                   hintText: 'Username',
-                  counterText: '$actualLength characters',
                   border: OutlineInputBorder(),
                 )
               ),
             ),
+            Padding(
+              padding: new EdgeInsets.fromLTRB(
+                SizeConfig.screenWidth*(23.5/375),
+                SizeConfig.screenHeight*(40/812),
+                SizeConfig.screenWidth*(23.5/375),
+                0,
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  border: OutlineInputBorder(),
+                )
+              ),
+            ),
+            SizedBox(height: SizeConfig.screenHeight*(50/812)),
+            Center(child: myButton(color: corpBlue, text: 'Login', textColor: Colors.white, weight: 107,)),
           ],
         ),
       ),

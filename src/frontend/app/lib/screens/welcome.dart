@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:app/custom_widgets/logo.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:app/size_config.dart';
+import 'package:app/custom_widgets/myButton.dart';
+import 'package:app/custom_widgets/customColors.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -13,69 +16,57 @@ class _WelcomeState extends State<Welcome> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 73),
+              padding: new EdgeInsets.only(top: SizeConfig.screenHeight*(113/812)),
               child: Logo(),
             ),
-            SizedBox(height: 8,),
+            SizedBox(height: SizeConfig.screenHeight*(8/812),),
             Text(
               'Reach your goals and maintain them with',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: SizeConfig.screenWidth*(14/375),
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Roboto Condensed',
               ),
             ),
-            SizedBox(height: 8,),
+            SizedBox(height: SizeConfig.screenHeight*(8/812),),
             Text(
               'scientific help and evidence',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: SizeConfig.screenWidth*(14/375),
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Roboto Condensed',
               ),
             ),
-            SizedBox(height: 73.23),
+            SizedBox(height: SizeConfig.screenHeight*(103.23/812)),
             SvgPicture.asset("assets/images/breakfast-morning-exercise.svg",
-              height: 220,
             ),
-            SizedBox(height: 50),
-            FlatButton(
-              onPressed: () {},
-              color: Color(0xFF2323FF),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-              child: Text(
-                'Create an account',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+            SizedBox(height: SizeConfig.screenHeight*(82.03/812)),
+            myButton(
+              textColor: Colors.white,
+              color: corpBlue,
+              text: 'Create an account',
+              weight: SizeConfig.screenWidth*(198/375) ,
+              onPressed: () async {
+                dynamic result = Navigator.pushNamed(context, '/register');
+              },
             ),
-            SizedBox(height: 5),
-            FlatButton(
+            SizedBox(height: SizeConfig.screenHeight*(16/812)),
+            myButton (
+              textColor: corpBlue,
+              color: Colors.white,
+              text: 'I have an account',
+              weight: SizeConfig.screenWidth*(198/375) ,
               onPressed: () async {
                 dynamic result = Navigator.pushNamed(context, '/login');
-//                Navigator.pushReplacementNamed(context, '/home', arguments: result);
               },
-              color: Colors.white,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-              child: Text(
-                'I have and account',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Color(0xFF2323FF),
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
             ),
           ],
         ),
