@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class Loading extends StatefulWidget {
-  @override
-  _LoadingState createState() => _LoadingState();
-}
-
-class _LoadingState extends State<Loading> {
-
-  // Data
-
+class Loading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text('loading');
+    return Scaffold(
+      body: Center(
+          child: SpinKitSquareCircle(
+            color: Colors.blue[900],
+            size: 90.0,
+          )
+      ),
+    );
   }
 }

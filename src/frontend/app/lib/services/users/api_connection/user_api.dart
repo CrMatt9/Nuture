@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:app/services/users/models/user_api_model.dart';
 
-final _base = "http://127.0.0.1:8000";
+final _base = "http://localhost:8000";
 final _tokenEndpoint = "/api-token-auth/";
 final _tokenURL = _base + _tokenEndpoint;
 

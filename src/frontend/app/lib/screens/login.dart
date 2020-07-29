@@ -1,22 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:app/size_config.dart';
-import 'package:app/custom_widgets/myButton.dart';
-import 'package:app/custom_widgets/customColors.dart';
+import 'package:app/custom_widgets/login_form.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:app/blocs/bloc_authentication/authentication_bloc.dart';
+import 'package:app/blocs/bloc_login/login_bloc.dart';
+import 'package:app/services/users/repository/user_repository.dart';
 
-class Login extends StatefulWidget {
+class Login extends StatelessWidget {
 
+  final UserRepository userRepository;
+
+  Login({Key key, @required this.userRepository})
+      : assert(userRepository != null), super(key: key);
 
   @override
-  _LoginState createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-
-  @override
-
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
@@ -27,7 +27,7 @@ class _LoginState extends State<Login> {
           color: Colors.black,
         ),
         title: Text(
-        'Login',
+          'Login',
           style: TextStyle(
             color: Colors.black,
             fontSize: SizeConfig.screenWidth*(20/375),
@@ -36,42 +36,30 @@ class _LoginState extends State<Login> {
         ),
         elevation: 0,
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: new EdgeInsets.fromLTRB(
-                SizeConfig.screenWidth*(23.5/375),
-                SizeConfig.screenHeight*(34/812),
-                SizeConfig.screenWidth*(23.5/375),
-                0,
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Username',
-                  border: OutlineInputBorder(),
-                )
-              ),
-            ),
-            Padding(
-              padding: new EdgeInsets.fromLTRB(
-                SizeConfig.screenWidth*(23.5/375),
-                SizeConfig.screenHeight*(40/812),
-                SizeConfig.screenWidth*(23.5/375),
-                0,
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  border: OutlineInputBorder(),
-                )
-              ),
-            ),
-            SizedBox(height: SizeConfig.screenHeight*(50/812)),
-            Center(child: myButton(color: corpBlue, text: 'Login', textColor: Colors.white, weight: 107,)),
-          ],
+      body: BlocProvider(
+        create: (context) {
+          return LoginBloc(
+            authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
+            userRepository: userRepository,
+          );
+        },
+
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                  padding: new EdgeInsets.fromLTRB(
+                    SizeConfig.screenWidth*(23.5/375),
+                    SizeConfig.screenHeight*(34/812),
+                    SizeConfig.screenWidth*(23.5/375),
+                    0,
+                  ),
+                  child: LoginForm(),
+              )
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }

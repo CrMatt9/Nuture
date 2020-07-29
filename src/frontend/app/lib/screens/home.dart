@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'logout.dart';
 
 class Home extends StatefulWidget {
 
@@ -35,7 +36,7 @@ class _HomeState extends State<Home> {
             setState(() => _currentIndex = index);
           },
           children: <Widget>[
-            Container(color: Colors.blueGrey,),
+            LogoutPage(),
             Container(color: Colors.red,),
             Container(color: Colors.green,),
             Container(color: Colors.blue,),

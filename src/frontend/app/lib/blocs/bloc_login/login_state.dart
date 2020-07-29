@@ -23,7 +23,3 @@ class LoginFaliure extends LoginState {
   @override
   String toString() => ' LoginFaliure { error: $error }';
 }
-
-class LoginInitial extends LoginState {}
-
-// TODO: I have to start over the login_bloc, it is empty
