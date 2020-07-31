@@ -34,7 +34,7 @@ class _myButtonState extends State<myButton> {
         child: Text(
           '${widget.text}',
           style: TextStyle(
-            fontSize: SizeConfig.screenWidth*(16/375),
+            fontSize: SizeConfig.screenHeight*(16/812),
             color: widget.textColor,
             fontFamily: 'Montserrat',
             fontWeight: FontWeight.bold,

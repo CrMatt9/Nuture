@@ -21,6 +21,7 @@ class Login extends StatelessWidget {
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(

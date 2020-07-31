@@ -30,55 +30,60 @@ class _WelcomeState extends State<Welcome> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: new EdgeInsets.only(top: SizeConfig.screenHeight*(113/812)),
-              child: Logo(),
-            ),
-            SizedBox(height: SizeConfig.screenHeight*(8/812),),
-            Text(
-              'Reach your goals and maintain them with',
-              style: TextStyle(
-                fontSize: SizeConfig.screenWidth*(14/375),
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Roboto Condensed',
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: new EdgeInsets.only(top: SizeConfig.screenHeight*(113/812)),
+                child: Logo(),
               ),
-            ),
-            SizedBox(height: SizeConfig.screenHeight*(8/812),),
-            Text(
-              'scientific help and evidence',
-              style: TextStyle(
-                fontSize: SizeConfig.screenWidth*(14/375),
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Roboto Condensed',
+              SizedBox(height: SizeConfig.screenHeight*(8/812),),
+              Text(
+                'Reach your goals and maintain them with',
+                style: TextStyle(
+                  fontSize: SizeConfig.screenWidth*(14/375),
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Roboto Condensed',
+                ),
               ),
-            ),
-            SizedBox(height: SizeConfig.screenHeight*(103.23/812)),
-            SvgPicture.asset("assets/images/breakfast-morning-exercise.svg",
-            ),
-            SizedBox(height: SizeConfig.screenHeight*(82.03/812)),
-            myButton(
-              textColor: Colors.white,
-              color: corpBlue,
-              text: 'Create an account',
-              weight: SizeConfig.screenWidth*(198/375) ,
-              onPressed: () async {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Register()));
-              },
-            ),
-            SizedBox(height: SizeConfig.screenHeight*(16/812)),
-            myButton (
-              textColor: corpBlue,
-              color: Colors.white,
-              text: 'I have an account',
-              weight: SizeConfig.screenWidth*(198/375) ,
-              onPressed: () async {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Login(userRepository: widget.userRepository,)));
-              },
-            ),
-          ],
+              SizedBox(height: SizeConfig.screenHeight*(8/812),),
+              Text(
+                'scientific help and evidence',
+                style: TextStyle(
+                  fontSize: SizeConfig.screenWidth*(14/375),
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Roboto Condensed',
+                ),
+              ),
+              SizedBox(height: SizeConfig.screenHeight*(103.23/812)),
+              SvgPicture.asset(
+                "assets/images/breakfast-morning-exercise.svg",
+                height: SizeConfig.screenHeight*(272.74/812),
+                width: SizeConfig.screenWidth*(275.1/375),
+              ),
+              SizedBox(height: SizeConfig.screenHeight*(82.03/812)),
+              myButton(
+                textColor: Colors.white,
+                color: corpBlue,
+                text: 'Create an account',
+                weight: SizeConfig.screenWidth*(198/375) ,
+                onPressed: () async {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Register()));
+                },
+              ),
+              SizedBox(height: SizeConfig.screenHeight*(16/812)),
+              myButton (
+                textColor: corpBlue,
+                color: Colors.white,
+                text: 'I have an account',
+                weight: SizeConfig.screenWidth*(198/375) ,
+                onPressed: () async {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Login(userRepository: widget.userRepository,)));
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
