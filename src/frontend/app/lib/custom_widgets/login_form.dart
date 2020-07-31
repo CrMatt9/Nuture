@@ -1,3 +1,4 @@
+import 'package:app/blocs/bloc_authentication/authentication_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:app/blocs/bloc_login/login_bloc.dart';
 import 'package:app/size_config.dart';
 import 'package:app/custom_widgets/myButton.dart';
 import 'package:app/custom_widgets/customColors.dart';
+import 'package:app/screens/home.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -32,6 +34,9 @@ class _LoginFormState extends State<LoginForm> {
             content: Text('${state.error}'),
             backgroundColor: Colors.red,
           ));
+        }
+        if (state is Logged){
+          Navigator.pop(context);
         }
       },
       child: BlocBuilder<LoginBloc, LoginState>(

@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:app/services/users/models/user_api_model.dart';
 
-final _base = "http://localhost:8000";
+final _base = "https://nuture2020.herokuapp.com";
 final _tokenEndpoint = "/api-token-auth/";
 final _tokenURL = _base + _tokenEndpoint;
 

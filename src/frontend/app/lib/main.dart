@@ -1,4 +1,3 @@
-import 'package:app/blocs/bloc_authentication/authentication_bloc.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app/screens/loading.dart';
@@ -11,6 +10,7 @@ import 'package:app/screens/splash.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'services/users/repository/user_repository.dart';
+import 'package:app/blocs/bloc_authentication/authentication_bloc.dart';
 
 class SimpleBlocDelegate extends BlocDelegate {
   @override
@@ -57,15 +57,6 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/welcome',
-      routes: {
-        '/loading' : (context) =>  Loading(),
-        '/welcome' : (context) => Welcome(),
-        '/home' : (context) => Home(),
-        '/login' : (context) => Login(userRepository: userRepository,),
-        '/register' : (context) => Register(),
-        '/splash' : (context) => Splash(),
-      },
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is AuthenticationUnintialized) {
@@ -75,7 +66,7 @@ class App extends StatelessWidget {
             return Home();
           }
           if (state is AuthenticationUnauthenticated) {
-            return Welcome();
+            return Welcome(userRepository: userRepository,);
           }
           if (state is AuthenticationLoading) {
             return Loading();

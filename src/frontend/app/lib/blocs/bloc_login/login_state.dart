@@ -1,6 +1,6 @@
 part of 'login_bloc.dart';
 
-@immutable
+
 abstract class LoginState extends Equatable{
   const LoginState();
 
@@ -23,3 +23,5 @@ class LoginFaliure extends LoginState {
   @override
   String toString() => ' LoginFaliure { error: $error }';
 }
+
+class Logged extends LoginState {}

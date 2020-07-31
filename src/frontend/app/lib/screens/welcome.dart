@@ -4,8 +4,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:app/size_config.dart';
 import 'package:app/custom_widgets/myButton.dart';
 import 'package:app/custom_widgets/customColors.dart';
+import 'package:app/screens/login.dart';
+import 'package:app/screens/register.dart';
+import 'package:app/services/users/repository/user_repository.dart';
+
 
 class Welcome extends StatefulWidget {
+
+  final UserRepository userRepository;
+
+  Welcome({Key key, @required this.userRepository})
+      : assert(userRepository != null), super(key: key);
+
   @override
   _WelcomeState createState() => _WelcomeState();
 }
@@ -55,7 +65,7 @@ class _WelcomeState extends State<Welcome> {
               text: 'Create an account',
               weight: SizeConfig.screenWidth*(198/375) ,
               onPressed: () async {
-                dynamic result = Navigator.pushNamed(context, '/register');
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Register()));
               },
             ),
             SizedBox(height: SizeConfig.screenHeight*(16/812)),
@@ -65,7 +75,7 @@ class _WelcomeState extends State<Welcome> {
               text: 'I have an account',
               weight: SizeConfig.screenWidth*(198/375) ,
               onPressed: () async {
-                dynamic result = Navigator.pushNamed(context, '/login');
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Login(userRepository: widget.userRepository,)));
               },
             ),
           ],
