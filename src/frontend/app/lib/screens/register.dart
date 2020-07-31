@@ -31,80 +31,82 @@ class _RegisterState extends State<Register> {
         elevation: 0,
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: new EdgeInsets.fromLTRB(
-                SizeConfig.screenWidth*(23.5/375),
-                SizeConfig.screenHeight*(34/812),
-                SizeConfig.screenWidth*(23.5/375),
-                0,
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: new EdgeInsets.fromLTRB(
+                  SizeConfig.screenWidth*(23.5/375),
+                  SizeConfig.screenHeight*(34/812),
+                  SizeConfig.screenWidth*(23.5/375),
+                  0,
+                ),
+                child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Username',
+                      border: OutlineInputBorder(),
+                    )
+                ),
               ),
-              child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Username',
-                    border: OutlineInputBorder(),
-                  )
+              Padding(
+                padding: new EdgeInsets.fromLTRB(
+                  SizeConfig.screenWidth*(23.5/375),
+                  SizeConfig.screenHeight*(40/812),
+                  SizeConfig.screenWidth*(23.5/375),
+                  0,
+                ),
+                child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Full name',
+                      border: OutlineInputBorder(),
+                    )
+                ),
               ),
-            ),
-            Padding(
-              padding: new EdgeInsets.fromLTRB(
-                SizeConfig.screenWidth*(23.5/375),
-                SizeConfig.screenHeight*(40/812),
-                SizeConfig.screenWidth*(23.5/375),
-                0,
+              Padding(
+                padding: new EdgeInsets.fromLTRB(
+                  SizeConfig.screenWidth*(23.5/375),
+                  SizeConfig.screenHeight*(40/812),
+                  SizeConfig.screenWidth*(23.5/375),
+                  0,
+                ),
+                child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'email',
+                      border: OutlineInputBorder(),
+                    )
+                ),
               ),
-              child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Full name',
-                    border: OutlineInputBorder(),
-                  )
+              Padding(
+                padding: new EdgeInsets.fromLTRB(
+                  SizeConfig.screenWidth*(23.5/375),
+                  SizeConfig.screenHeight*(40/812),
+                  SizeConfig.screenWidth*(23.5/375),
+                  0,
+                ),
+                child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      border: OutlineInputBorder(),
+                      helperText: '8+ characters'
+                    )
+                ),
               ),
-            ),
-            Padding(
-              padding: new EdgeInsets.fromLTRB(
-                SizeConfig.screenWidth*(23.5/375),
-                SizeConfig.screenHeight*(40/812),
-                SizeConfig.screenWidth*(23.5/375),
-                0,
-              ),
-              child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'email',
-                    border: OutlineInputBorder(),
-                  )
-              ),
-            ),
-            Padding(
-              padding: new EdgeInsets.fromLTRB(
-                SizeConfig.screenWidth*(23.5/375),
-                SizeConfig.screenHeight*(40/812),
-                SizeConfig.screenWidth*(23.5/375),
-                0,
-              ),
-              child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    border: OutlineInputBorder(),
-                    helperText: '8+ characters'
-                  )
-              ),
-            ),
-            Padding(
-              padding: new EdgeInsets.fromLTRB(
-                SizeConfig.screenWidth*(264/375),
-                SizeConfig.screenHeight*(263/812),
-                SizeConfig.screenWidth*(24/375),
-                0,
-              ),
-              child: myButton(
-                text: 'Next',
-                textColor: Colors.white,
-                color: corpBlue,
-                weight: 87,
-              ),
-            )
-          ],
+              Padding(
+                padding: new EdgeInsets.fromLTRB(
+                  SizeConfig.screenWidth*(264/375),
+                  SizeConfig.screenHeight*(263/812),
+                  SizeConfig.screenWidth*(24/375),
+                  0,
+                ),
+                child: myButton(
+                  text: 'Next',
+                  textColor: Colors.white,
+                  color: corpBlue,
+                  weight: 87,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

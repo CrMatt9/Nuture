@@ -44,19 +44,22 @@ class Login extends StatelessWidget {
           );
         },
 
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Padding(
-                  padding: new EdgeInsets.fromLTRB(
-                    SizeConfig.screenWidth*(23.5/375),
-                    SizeConfig.screenHeight*(34/812),
-                    SizeConfig.screenWidth*(23.5/375),
-                    0,
-                  ),
-                  child: LoginForm(),
-              )
-            ],
+        child: Scaffold(
+          resizeToAvoidBottomPadding: false,
+          body: Center(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                    padding: new EdgeInsets.fromLTRB(
+                      SizeConfig.screenWidth*(23.5/375),
+                      SizeConfig.screenHeight*(34/812),
+                      SizeConfig.screenWidth*(23.5/375),
+                      0,
+                    ),
+                    child: LoginForm(),
+                )
+              ],
+            ),
           ),
         ),
       )
