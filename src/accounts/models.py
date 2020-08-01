@@ -1,19 +1,13 @@
 # from django.db import models
-# from django.contrib.auth.models import AbstractUser
+# from django.contrib.auth.models import User
 # from datetime import datetime
 
-# # Create your models here.
-# class CustomUser(AbstractUser):
-#     pass
 
-#     def __str__(self):
-#         return self.username
-
-# class UserInfo(models.Model):
+# class Customer(models.Model):
 
 #     class Meta:
-#         verbose_name = "userInfo"
-#         verbose_name_plural = "userInfos"
+#         verbose_name = "Customer"
+#         verbose_name_plural = "Customers"
 #         ordering = ['-date_created']
 
 
@@ -37,43 +31,36 @@
 #         ('Mover arround constantly', 'Mover arround constantly'),
 #         )
 
-#     first_name = models.CharField(max_length=50, default='None')
-#     last_name = models.CharField( max_length=50, default='None')
-#     email = models.CharField( max_length=50, default='None')
-#     uname = models.CharField( max_length=50, default='None')
-
-
+#     user = models.OnetoOneField(User)
 #     age = models.IntegerField(default=0)
 #     gender = models.CharField(choices=GENDERS, max_length=50, default='None')
 #     height = models.IntegerField(default=0)
 #     weight = models.FloatField(default=0)
-#     fatp = models.FloatField(default=0)
-#     goal = models.CharField(choices=GOALS, max_length=50, default='None')
-#     lifestyle = models.CharField(choices=LIFESTYLES, max_length=50, default='None')
+#     pal = models.IntegerField(default=0)
 
-#     low_cardio = models.IntegerField(default=0)
-#     high_cardio = models.IntegerField(default=0)
-#     resistance = models.IntegerField(default=0)
-#     stretching = models.IntegerField(default=0)
 
-#     sleeph = models.FloatField(default=0)
-#     trackcal = models.BooleanField(default=False)
-#     date_created = models.DateTimeField(auto_now_add=True)
 
-#     wtraining = [
-#         low_cardio, high_cardio, resistance, stretching
-#     ]
 
-#     pinfo = [ age, gender, height, weight, fatp, goal,
-#      lifestyle, wtraining, sleeph, trackcal, date_created ]
 
-#     def __str__(self):
-#         return self.uname
+    """This fields may be useful for further utilities"""
 
-#     def save(self, *args, **kwargs):
-#         try:
-#             print("success")
-#         except:
-#             print("classification failed")
+    # fatp = models.FloatField(default=0)
+    # goal = models.CharField(choices=GOALS, max_length=50, default='None')
+    # lifestyle = models.CharField(choices=LIFESTYLES, max_length=50, default='None')
 
-#         super().save(*args, **kwargs)
+    # low_cardio = models.IntegerField(default=0)
+    # high_cardio = models.IntegerField(default=0)
+    # resistance = models.IntegerField(default=0)
+    # stretching = models.IntegerField(default=0)
+
+    # sleeph = models.FloatField(default=0)
+    # trackcal = models.BooleanField(default=False)
+    # date_created = models.DateTimeField(auto_now_add=True)
+
+    # wtraining = [
+    #     low_cardio, high_cardio, resistance, stretching
+    # ]
+
+
+    def __str__(self):
+        return self.user.username
